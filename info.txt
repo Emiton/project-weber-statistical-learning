@@ -1,0 +1,5 @@
+The purpose of this project will be to determine which factors are most likely
+to lead an individual engaging in high risk sexual behavior.
+
+The leading classifier of high risk behavior in this study is engaging in
+unprotected sex.
