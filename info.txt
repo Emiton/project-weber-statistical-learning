@@ -3,3 +3,6 @@ to lead an individual engaging in high risk sexual behavior.
 
 The leading classifier of high risk behavior in this study is engaging in
 unprotected sex.
+
+TODO:
+-run simple test to find out data spread and so forth
