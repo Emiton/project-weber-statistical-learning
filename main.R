@@ -4,7 +4,8 @@
 install.packages("tidyverse")
 
 # libraries
-library(readxl)
+library(readxl) 
+library(tidyverse)
 
 
 data <- read_excel("./data/PW Client Risk Assessment Results Coded_cleaned.xlsx")
@@ -15,6 +16,7 @@ for(val in drug_use_columns) {
   data[val][data[val] > 998] <- 0
 }
 
+# TODO: Get rid of data$11
 # create subset of dataframe
 testable_data <- data.frame(data$`Client Number`, data$`1`, data$`5`,
                             data$`8`, data$`10`, data$`13`,
@@ -28,7 +30,29 @@ testable_data$drug_use <- data$`30A` + data$`30B` + data$`30C`
                            + data$`30G`+ data$`30H`+ data$`30I`
                            + data$`30J` 
 
-summary(data)
+# start plotting
+ggplot(testable_data, aes(testable_data$data..8.)) 
+  + geom_violin() + geom_point()
 
-# method 2 for creating a data frame
-# test <- data[,c("Client Number","1","5","8","10","13","27","28","35","37","38")]
+# create pairwise plot of all variables
+pairs(testable_data)
+
+# Pie chart for question 8 (housing)
+housing <- table(testable_data$data..8.)
+pie(housing)
+
+# Show amount of things in a variable
+myBar <- ggplot(testable_data, aes(testable_data$data..8.)) + geom_bar(fill = "#0073C2FF")
+
+# histogram with many different bars
+a <- ggplot(testable_data, aes(x = testable_data$data..1.))
+a + geom_histogram(bins = 30, color = "black", fill = "gray")
+
+# density plot
+b <- ggplot(testable_data, aes(x = testable_data$data..1.))
+b + geom_density()
+
+# pie chart for one column ??
+# data spead for one feature ??
+
+summary(testable_data)
