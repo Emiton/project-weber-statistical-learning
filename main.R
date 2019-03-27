@@ -63,9 +63,55 @@ a <- ggplot(testable_data, aes(x = testable_data$data..5.))
 a + geom_histogram(bins = 5, color = "black", fill = "gray")
 
 # density plot with dotted line for mean
-b <- ggplot(testable_data, aes(x = testable_data$data..1.))
-b + geom_density() +geom_vline(aes(xintercept = mean(testable_data$data..1.)), linetype = "dashed", size = 0.6) + ggtitle("Something NEw") +
-    labs(x="My loorrrrt")
+# age
+age_density <- ggplot(testable_data, aes(x = testable_data$age))
+age_density + geom_density() +geom_vline(aes(xintercept = mean(testable_data$age)), linetype = "dashed", size = 0.6) + ggtitle("Client Age") +
+    labs(x="Age", y="")
 
+
+# density plot with dotted line for mean
+# career duration
+career_density <- ggplot(testable_data, aes(x = testable_data$career_duration))
+career_density + geom_density() +geom_vline(aes(xintercept = mean(testable_data$career_duration)), linetype = "dashed", size = 0.6) + ggtitle("Time in Occupation") +
+  labs(x="Years", y="")
+
+# density plot with dotted line for mean
+# female partners
+female_density <- ggplot(testable_data, aes(x = testable_data$female_partners))
+female_density + geom_density() +geom_vline(aes(xintercept = mean(testable_data$female_partners)), linetype = "dashed", size = 0.6) + ggtitle("Female Partners") +
+  labs(x="Number of Partners", y="")
+
+# density plot with dotted line for mean
+# male partners
+male_density <- ggplot(testable_data, aes(x = testable_data$male_partners))
+male_density + geom_density() +geom_vline(aes(xintercept = mean(testable_data$male_partners)), linetype = "dashed", size = 0.6) + ggtitle("Male Partners") +
+  labs(x="Number of Partners", y="")
+
+# histogram 
+# schooling
+schooling_histogram <- ggplot(testable_data, aes(x = testable_data$schooling))
+schooling_histogram + geom_histogram(bins = 5, color = "black", fill = "blue") +
+  ggtitle("Level of Schooling") +
+  labs(x="", y="")
+
+# histogram 
+# domestic violence
+domestic_histogram <- ggplot(testable_data, aes(x = testable_data$domestic_abuse))
+domestic_histogram + geom_histogram(bins = 3, color = "black", fill = "red") +
+  ggtitle("Domestic Abuse") +
+  labs(x="Type of Abuse Faced", y="")
+
+# Pie chart 
+# Housing
+lbl <- c("unstable", "stable")
+housing <- table(testable_data$housing)
+pie(housing, labels=lbl, main="Housing in the Past 6 Months")
+
+
+# Pie chart 
+# Jail
+lbl <- c("jail", "no jail")
+housing <- table(testable_data$jail)
+pie(housing, labels=lbl, col=rainbow(length(lbl)), main="Spent Time in Prison")
 
 summary(testable_data)
